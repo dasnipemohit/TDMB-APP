@@ -1,0 +1,15 @@
+/* .app {
+    /* background-image: linear-gradient(230deg,
+    rgba(12, 12, 12, 0.2)0%,
+    rgba(205, 185, 223, 0.1)50%,
+    rgb(216, 148, 148)75%,
+    rgb(250, 243, 243)100%
+    ); 
+
+}    */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

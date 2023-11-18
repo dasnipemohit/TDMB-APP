@@ -1,0 +1,46 @@
+footer {
+    background-color: #191919;
+    margin-top: 100px;
+    padding: 50px 0;
+    color: mediumspringgreen;
+    width: 100%;
+  }
+  footer .container {
+    display: grid;
+    grid-template-columns: 6fr 2fr 2fr;
+    grid-gap: 30px;
+    max-width: 1300px;
+    margin-inline: auto;
+  }
+  footer ul {
+    margin-bottom: 30px;
+  }
+  footer ul li {
+    margin-right: 30px;
+  }
+  .icon  {
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    line-height: 40px !important;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 20px;
+    margin-top: 50px;
+    color: aqua;
+    
+  }
+  footer .img {
+    margin-top: 40px;
+  }
+  footer span {
+    font-size: 12px;
+  }
+  @media only screen and (max-width: 768px) {
+    footer .container {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 30px;
+    }
+  }
+  
