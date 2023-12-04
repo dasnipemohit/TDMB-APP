@@ -4,11 +4,13 @@ import "./search.css"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Enlargment from './Enlargment';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NextArrow = ({ onClick }) => (
     <div className='control-btn' onClick={onClick}>
-        <button className='one'>
-            <i className='fa fa-chevron-right'></i>
+         <button className='one'>
+           <i className='fa fa-chevron-right'></i>
         </button>
     </div>
 );
@@ -21,12 +23,15 @@ const PrevArrow = ({ onClick }) => (
     </div>
 );
 
+// ... (your existing imports)
+
 const Search = ({ searchQuery }) => {
     const [searchList, setSearchList] = useState([]);
     const [filteredSearchList, setFilteredSearchList] = useState([]);
+    const [hoverdata, setHovereddata] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // console.log('<--------Search--Query:----------------->', searchQuery);
         async function fetchData() {
             const query = searchQuery ? `&query=${searchQuery}` : '';
             try {
@@ -34,12 +39,11 @@ const Search = ({ searchQuery }) => {
                     `https://api.themoviedb.org/3/search/movie?query=company&include_adult=false&language=en-US&page=1&api_key=8d4e05a343cafbb6ffb3c2098009ac8a${query}`
                 );
                 setSearchList(response?.data?.results || []);
-                // console.log("the api Search data", response.data.results);
             } catch (err) {
                 console.log(err);
             }
         }
-       
+
         const filteredResults = searchList.filter(item => {
             const originalTitle = item?.original_title.toLowerCase?.() || '';
             const searchQueryLower = searchQuery?.toLowerCase?.();
@@ -47,7 +51,6 @@ const Search = ({ searchQuery }) => {
         });
 
         setFilteredSearchList(filteredResults);
-        // console.log("Filtered Search data:", filteredResults);
         fetchData();
     }, [searchQuery, searchList]);
 
@@ -60,30 +63,38 @@ const Search = ({ searchQuery }) => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />
     };
-    return (
 
+    const handleClik = (searchId) => {
+        navigate(`/movie/${searchId}`);
+    };
+
+    return (
         <div className='upcoming-container'>
-            <h1 className='search-heading'>Trending Video</h1>
+            <h1 className='search-heading'><Link to="/search" className='link'>Trending Movies</Link></h1>
             <div className='search'>
                 <Slider style={{ width: '100%' }} {...settings}>
-                    {
-                        filteredSearchList.filter(search =>search.poster_path).map((search, id) => (
-                            <div className="srch-box" key={id}>
+                    {filteredSearchList.filter(upcoming => upcoming.poster_path).map((search, id) => (
+                        <div
+                            className={`srch-box ${hoverdata === id ? 'hovered' : ''}`}
+                            key={id}
+                            onMouseEnter={() => setHovereddata(id)}
+                            onMouseLeave={() => setHovereddata(null)}
+                            onClick={() => handleClik(search.id)}
+                        >
+                            {search.poster_path && (
                                 <img
                                     src={`https://image.tmdb.org/t/p/w500${search.poster_path}`}
                                     className="search-pic"
                                     alt={` ${search?.title}`}
                                 />
-                            </div>
-                        ))}
+                            )}
+                            {hoverdata === id && <Enlargment search={search} />}
+                        </div>
+                    ))}
                 </Slider>
             </div>
-
         </div>
     );
 };
-
-
-
 
 export default Search;

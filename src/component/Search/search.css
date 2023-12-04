@@ -21,54 +21,109 @@
   left: 2%;
   z-index: 99;
 }
-
+.link {
+  text-decoration: none;
+  color: black;
+}
 .search {
   text-align: center;
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* background-image: linear-gradient(
-    230deg,
-    rgba(12, 12, 12, 0.2) 0%,
-    rgba(205, 185, 223, 0.1) 50%,
-    rgb(216, 148, 148) 75%,
-    rgb(250, 243, 243) 100%
-  ); */
-}
-
-.element {
   width: 100%;
   max-width: 1300px;
-  height: 320px;
+  height: auto;
+  max-height: 400px;
   margin-inline: auto;
 }
-
 .search-heading {
-  font-size: 44px;
-  margin-bottom: 20px;
-  justify-content: center;
-  text-align: left;
+  font-size: 2rem;
+    font-weight: 700;
+    margin: 20px 0 30px 0;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    color: #333;
 }
 
 .srch-box {
-  width: 20%;
-  height: 340px;
+  max-width: 450px;
+  height: 400px;
   padding: 0px;
-  /* margin: 8px;  */
   box-sizing: border-box;
   border: 4px solid rgba(247, 245, 245, 0.1);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
 .search-pic {
   width: 100%;
   height: 100%;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
   transition: transform 0.3s ease-in-out;
 }
 
-.srch-box:hover .search-pic {
+.srch-box:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
+}
+.hover-content,
+.enlarged-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  opacity: 0;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: auto;
+  overflow-wrap: break-word;
+  transition: opacity 0.3s ease-in-out;
+  translate: (590px, 279.675px);
+}
+
+.hover-content {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.hover-content .name-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: chartreuse;
+}
+
+.hover-content .card-overview {
+  font-size: 10px;
+  font-weight: bolder;
+  font-family: monospace;
+  color: aqua;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.srch-box:hover .hover-content {
+  opacity: 1;
+}
+
+.enlarged-pic {
+  width: 100%; /* Change this value according to your preference */
+  height: 100%; /* Change this value according to your preference */
+  object-fit: cover;
+}
+
+.srch-box:hover .enlarged-content {
+  opacity: 1;
+  translate: (590px, 356.78px);
+}
+.enlarged-content::after {
+  translate: (1590px, 1356.489px);
+  background-color: #feb47b;
 }

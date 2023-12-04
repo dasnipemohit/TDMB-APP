@@ -1,8 +1,33 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
+import "./home.css"
 
-const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genres, tags} }) => {
+const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genres, tags } }) => {
+  const coverRef = useRef(null);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const coverElement = coverRef.current;
+      const scrollPosition = window.scrollY;
+
+      if (coverElement) {
+        const coverHeight = coverElement.offsetHeight;
+        const opacity = 1 - scrollPosition / coverHeight;
+        coverElement.style.opacity = opacity;
+
+        if (scrollPosition <= coverHeight) {
+          coverElement.classList.add("sticky");
+        } else {
+          coverElement.classList.remove("sticky");
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -11,7 +36,7 @@ const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genre
           <img src={cover} alt='' />
         </div>
         <div className='content_flex'>
-          <div className='details row'>
+          <div className='coverContent'>
             <h1>{name}</h1>
             <div className='rating flex'>
               <div className='rate'>

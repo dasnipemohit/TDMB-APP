@@ -1,0 +1,107 @@
+/* Replace your existing CSS with this updated version */
+
+.latest-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.latest-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 20px 0 30px 0;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  color: #333;
+}
+
+.latest-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.latest-box {
+  max-width: 450px;
+  height: 400px;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+  border: 4px solid rgba(247, 245, 245, 0.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.latest-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.latest-box:hover {
+  transform: scale(1.05);
+}
+
+.latest-box::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 12, 12, 0.2) 0%,
+    rgba(205, 185, 223, 0.1) 50%,
+    rgb(216, 148, 148) 75%,
+    rgb(250, 243, 243) 100%
+  );
+  z-index: -1;
+}
+
+.latest-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.latest-overlay h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.latest-overlay p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.latest-overlay a {
+  background: rgb(34, 0, 255);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.latest-overlay a:hover {
+  background: rgb(0, 7, 139);
+}
+
+.latest-box:hover .latest-overlay {
+  opacity: 1;
+}

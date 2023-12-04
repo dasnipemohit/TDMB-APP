@@ -10,6 +10,7 @@ footer {
     grid-template-columns: 6fr 2fr 2fr;
     grid-gap: 30px;
     max-width: 1300px;
+    width: 100%;
     margin-inline: auto;
   }
   footer ul {
@@ -32,6 +33,7 @@ footer {
   }
   footer .img {
     margin-top: 40px;
+    display: flex;
   }
   footer span {
     font-size: 12px;

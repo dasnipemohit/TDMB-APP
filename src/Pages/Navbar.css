@@ -1,13 +1,17 @@
+/* Navbar.css */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 header {
   width: 100%;
   background-image: linear-gradient(
-    178deg,
-    #4cd964,
-    #5ac8fa,
-    #007aff,
-    #34aadc,
-    #5856d6,
-    #ff2d55
+    69.57deg,
+    rgba(15, 16, 20, 0.95) 16.24%,
+    rgba(15, 16, 20, 0) 98.46%
   );
   border-radius: 0%;
   color: #fff;
@@ -16,37 +20,59 @@ header {
   padding: 0;
   margin-inline: auto;
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Adjusted for responsive layout */
+  align-items: center; /* Centered items vertically */
 }
 
 .container_flexSB {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center; /* Centered items vertically */
   max-width: 1300px;
   width: 100%;
   margin-inline: auto;
+  padding-block: 0.7rem;
 }
-.link {
+
+.flexSB-nav {
+  display: flex; /* Change back to flex */
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  width: 100%; /* Full width for better responsiveness */
+}
+
+.flexSB ul {
+  list-style: none; /* Remove default list styling */
+  display: flex; /* Display list items inline */
+}
+
+.flexSB li {
+  margin-right: 20px;
+}
+
+.ink {
   text-decoration: none;
   color: #fff;
   font-size: x-large;
   font-family: cursive;
-  margin-left: 16px;
-  padding-top: 10px;
 }
+
 .logo img {
-  max-width: 280px;
-  background-color: none;
-  background-image: none;
+  width: 100%;
+  max-width: 160px;
+  padding-top: 5px;
 }
 
 .fonticon {
-  height: 25px;
+  height: 23px;
   text-align: center;
   position: absolute;
   color: rgb(13, 13, 13);
+  padding: 6px;
 }
+
 .nav-btn {
   background-image: linear-gradient(
     230deg,
@@ -62,13 +88,14 @@ header {
   border: none;
   color: #fff;
 }
+
 .nav-btn:hover {
   cursor: pointer;
   border: 2px solid mediumspringgreen;
 }
 
 .input-icon {
-  border-radius: 1px;
+  border-radius: 0.5px;
   font-size: 15px;
   font-weight: bold;
   color: #030303;
@@ -77,70 +104,85 @@ header {
   color: #fff;
   font-weight: 500;
   font-size: 17px;
-  height: 30px;
+  height: 33px;
   align-items: center;
-  padding: 12px 24px;
+  padding: 2px 24px;
+  text-align: right;
   background-image: linear-gradient(
     80deg,
     rgb(237, 169, 157) 236%,
     lavender 130%
   );
   outline-style: groove;
+  width: 100%; /* Full width for better responsiveness */
 }
+
 input::placeholder {
-  /* padding: 20px;  */
   transition: background 0.5s ease-out;
   font-family: cursive;
   border-radius: 20px;
+  /* padding-left: 10px; */
 }
 
 .toggle {
   display: none;
 }
-.link:active {
+
+.ink:active {
   font-family: Arial, Helvetica, sans-serif;
   color: #ff2d55;
   transition: color 0.2s;
 }
 
 @media only screen and (max-width: 768px) {
-  header nav .flexSB {
+  .account {
     display: none;
   }
-  .account {
+  .flexSB {
     display: none;
   }
   .navMenu-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Change to row for displaying items horizontally */
+    justify-content: space-around; /* Adjusted for better spacing */
+    align-items: center; /* Centered items vertically */
     position: absolute;
     top: 0;
     left: 0;
     background-color: #7359d2;
-    width: 50%;
     height: 100vh;
-    z-index: 9999;
+    z-index: 999;
+    width: 50%;
   }
+  header nav .flexSB,
+  .input-icon {
+    display: none;
+  }
+
   header ul li {
     align-items: left;
     margin-top: 30px;
     padding: 0 20px;
   }
+
   .toggle {
     display: block;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 30px;
+    right: 20px;
     margin: auto;
     cursor: pointer;
     background: none;
     border: none;
   }
-  .link {
+
+  .ink {
     text-align: center;
     align-items: center;
+    color: #fff;
   }
+
   .link:active {
     font-size: xx-large;
     background: #34aadc;
